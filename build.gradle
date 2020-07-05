@@ -1,0 +1,39 @@
+plugins {
+    id 'scala'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'MainApp'
+        )
+    }
+}
+
+javafx {
+    version = "14"
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    implementation 'org.scala-lang:scala-library:2.12'
+    testImplementation 'org.scalatest:scalatest_2.12'
+    testCompile group: 'org.scalatest', name: 'scalatest_2.12', version: '3.3.0-SNAP2'
+    compile group: 'com.typesafe.akka', name: "akka-actor_2.12", version: '2.6.6'
+    compile group: 'com.typesafe.akka', name: "akka-cluster_2.12", version: '2.6.6'
+}
+
+apply plugin: 'application'
+mainClassName = 'org.example.MainApp'
+
